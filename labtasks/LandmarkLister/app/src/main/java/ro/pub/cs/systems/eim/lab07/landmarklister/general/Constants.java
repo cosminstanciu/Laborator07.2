@@ -6,7 +6,7 @@ public interface Constants {
 
     final public static String TAG = "[Landmark Lister]";
 
-    final public static String LANDMARK_LISTER_WEB_SERVICE_INTERNET_ADDRESS = "http://api.geonames.org/citiesJSON?";
+    final public static String LANDMARK_LISTER_WEB_SERVICE_INTERNET_ADDRESS = "http://api.geonames.org/citiesJSON";
 
     final public static String MISSING_INFORMATION_ERROR_MESSAGE = "All fields need to be completed!";
 
@@ -18,7 +18,7 @@ public interface Constants {
     final public static int SOUTH_INDEX = 1;
     final public static int EAST_INDEX = 2;
     final public static int WEST_INDEX = 3;
-    final public static String CREDENTIALS = "username=eim2017";
+    final public static String CREDENTIALS = "username=pdsd";
 
     final public static String GEONAMES = "geonames";
     final public static String LATITUDE = "lat";

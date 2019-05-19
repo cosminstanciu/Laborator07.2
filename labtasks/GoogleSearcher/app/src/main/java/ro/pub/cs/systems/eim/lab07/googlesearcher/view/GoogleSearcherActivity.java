@@ -9,8 +9,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import ro.pub.cs.systems.eim.lab07.googlesearcher.R;
+import ro.pub.cs.systems.eim.lab07.googlesearcher.general.Constants;
+import ro.pub.cs.systems.eim.lab07.googlesearcher.network.GoogleSearcherAsyncTask;
 
-public class GoogleSearcherActivity extends AppCompatActivity {
+public class
+GoogleSearcherActivity extends AppCompatActivity {
 
     private EditText keywordEditText;
     private WebView googleResultsWebView;
@@ -23,10 +26,22 @@ public class GoogleSearcherActivity extends AppCompatActivity {
         public void onClick(View view) {
             // TODO exercise 6a)
             // obtain the keyword from keywordEditText
+            String keyword = keywordEditText.getText().toString();
             // signal an empty keyword through an error message displayed in a Toast window
-            // split a multiple word (separated by space) keyword and link them through +
-            // prepend the keyword with "search?q=" string
-            // start the GoogleSearcherAsyncTask passing the keyword
+            if (keyword == null || keyword.isEmpty()) {
+                Toast.makeText(getApplication(), Constants.EMPTY_KEYWORD_ERROR_MESSAGE, Toast.LENGTH_LONG).show();
+            } else {
+                // split a multiple word (separated by space) keyword and link them through +
+                String keywords[] = keyword.split(" ");
+                keyword = Constants.SEARCH_PREFIX + keywords[0];
+                for (int index = 1; index < keywords.length; index++) {
+                    keyword += "+" + keywords[index];
+                }
+                // prepend the keyword with "search?q=" string
+                // start the GoogleSearcherAsyncTask passing the keyword
+                new GoogleSearcherAsyncTask(googleResultsWebView).execute(keyword);
+            }
+
         }
     }
 
